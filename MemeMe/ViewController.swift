@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     let pickerController = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -17,8 +18,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Do any additional setup after loading the view.
         pickerController.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
 
     @IBAction func pickImageFromPhotos(_ sender: Any) {
+        pickerController.sourceType = .photoLibrary
         present(pickerController, animated: true, completion: nil)
     }
     
@@ -28,6 +34,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
 
         self.pickerController.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func imageFromCamera(_ sender: Any) {
+        pickerController.sourceType = .camera
+        present(pickerController, animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

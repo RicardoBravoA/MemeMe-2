@@ -15,12 +15,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var footerText: UITextField!
     let pickerController = UIImagePickerController()
     
+    var memeTextAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.white,
+        .strokeColor: UIColor.black,
+        .strokeWidth: -3.5
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         pickerController.delegate = self
+        
+        headerText.defaultTextAttributes = memeTextAttributes
+        footerText.defaultTextAttributes = memeTextAttributes
+        
+        headerText.textAlignment = .center
+        footerText.textAlignment = .center
+        
+        headerText.font = UIFont(name: "impact", size: 30)
+        footerText.font = UIFont(name: "impact", size: 30)
+        
         headerText.delegate = self
         footerText.delegate = self
+        
+        headerText.text = "TOP"
+        footerText.text = "BOTTOM"
 
     }
     

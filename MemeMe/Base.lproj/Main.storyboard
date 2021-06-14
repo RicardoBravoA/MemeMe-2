@@ -7,6 +7,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="impact.ttf">
+            <string>Impact</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -16,11 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xQ2-xY-uNm">
-                                <rect key="frame" x="71" y="334" width="272" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMt-5w-QJs">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="FMt-5w-QJs">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Qr4-rH-ape"/>
@@ -38,13 +39,38 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="I AM A HEADER" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpq-7P-eJp">
+                                <rect key="frame" x="20" y="64" width="374" height="34"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xQ2-xY-uNm">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="7xP-ZC-Edf"/>
+                                    <constraint firstAttribute="width" constant="300" id="fLc-38-LaP"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="I AM A FOOTER" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YfY-Fn-6AQ">
+                                <rect key="frame" x="20" y="764" width="374" height="34"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2fo-ky-3vD"/>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6Ni-XN-aPJ"/>
+                            <constraint firstItem="YfY-Fn-6AQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6oW-Ga-Ca5"/>
+                            <constraint firstItem="zpq-7P-eJp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="K1o-6i-O9K"/>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="K8E-4X-wgo"/>
+                            <constraint firstItem="FMt-5w-QJs" firstAttribute="top" secondItem="YfY-Fn-6AQ" secondAttribute="bottom" constant="20" id="KPB-4I-myo"/>
+                            <constraint firstItem="zpq-7P-eJp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="PRX-9U-gk1"/>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VS4-Qq-r9C"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YfY-Fn-6AQ" secondAttribute="trailing" constant="20" id="tTP-12-nbN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zpq-7P-eJp" secondAttribute="trailing" constant="20" id="ufs-XO-RXc"/>
+                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zD8-RU-4UN"/>
                         </constraints>
                     </view>
                     <connections>

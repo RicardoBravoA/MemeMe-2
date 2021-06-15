@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     var activeField: UITextField?
     
     let pickerController = UIImagePickerController()
@@ -48,8 +49,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         headerText.delegate = self
         footerText.delegate = self
         
-        headerText.text = Text.TOP.rawValue
-        footerText.text = Text.BOTTOM.rawValue
+        initScreen()
 
     }
     
@@ -62,7 +62,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsuscribeFromKeyboardNotifications()
     }
 
-    @IBAction func pickImageFromPhotos(_ sender: Any) {
+    @IBAction func pickImageFromAlbum(_ sender: Any) {
         pickerController.sourceType = .photoLibrary
         present(pickerController, animated: true, completion: nil)
     }
@@ -73,6 +73,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
 
         self.pickerController.dismiss(animated: true, completion: nil)
+        self.shareButton.isEnabled = true
     }
     
     @IBAction func imageFromCamera(_ sender: Any) {
@@ -84,7 +85,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.scrollView.isScrollEnabled = true
         let info = notification.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height, right: 0.0)
+        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height + 50 , right: 0.0)
 
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
@@ -139,7 +140,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        imageView.image = memedImage
         
         // show controls
         self.topToolbar.isHidden = false
@@ -149,7 +149,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func shareMeme(_ sender: Any) {
-        let meme = Meme(topText: headerText.text!, bottomText: footerText.text!, originalImage: imageView.image!, memeImage: generateMemeImage())
-        print(meme)
+        let memeImage = generateMemeImage()
+        let meme = Meme(topText: headerText.text!, bottomText: footerText.text!, originalImage: imageView.image!, memeImage: memeImage)
+        let activityViewController = UIActivityViewController(activityItems: [ meme.memeImage ], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
+    
+    @IBAction func cancelAction(_ sender: Any) {
+        initScreen()
+    }
+    
+    private func initScreen(){
+        headerText.text = Text.TOP.rawValue
+        footerText.text = Text.BOTTOM.rawValue
+        imageView.image = nil
+        shareButton.isEnabled = false
+    }
+    
 }

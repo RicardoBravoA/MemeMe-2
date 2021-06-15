@@ -10,6 +10,6 @@ import UIKit
 struct Meme {
     let topText: String
     let bottomText: String
-    let originalImage: UIImageView
-    let memeImage: UIImageView
+    let originalImage: UIImage
+    let memeImage: UIImage
 }

@@ -14,7 +14,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var headerText: UITextField!
     @IBOutlet weak var footerText: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var topToolbar: UIToolbar!
     var activeField: UITextField?
     
     let pickerController = UIImagePickerController()
@@ -130,8 +131,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func generateMemeImage() -> UIImage {
 
         // hide controls
-        
-        self.toolbar.isHidden = true
+        self.topToolbar.isHidden = true
+        self.bottomToolbar.isHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -141,12 +142,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imageView.image = memedImage
         
         // show controls
-        self.toolbar.isHidden = false
+        self.topToolbar.isHidden = false
+        self.bottomToolbar.isHidden = false
         
         return memedImage
     }
     
-    @IBAction func saveMeme(_ sender: Any) {
+    @IBAction func shareMeme(_ sender: Any) {
         let meme = Meme(topText: headerText.text!, bottomText: footerText.text!, originalImage: imageView.image!, memeImage: generateMemeImage())
         print(meme)
     }

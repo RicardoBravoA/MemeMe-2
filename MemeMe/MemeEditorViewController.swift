@@ -149,7 +149,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         activityViewController.completionWithItemsHandler = {(_, completed: Bool, _, _) in
             if completed {
                 // User completed activity
-                self.saveImageToDocumentDirectory(image: meme.memeImage)
+                self.saveMeme(image: meme.memeImage)
+                
+                // Save meme in AppDelegate
+                (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
             }
             
         }
@@ -168,7 +171,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         shareButton.isEnabled = false
     }
     
-    private func saveImageToDocumentDirectory(image: UIImage ) {
+    private func saveMeme(image: UIImage ) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileName = "image-meme-\(NSDate().timeIntervalSince1970).png" // name of the image to be saved
         let fileURL = documentsDirectory.appendingPathComponent(fileName)

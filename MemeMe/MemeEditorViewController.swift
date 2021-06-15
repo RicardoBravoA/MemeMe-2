@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Ricardo Bravo on 14/06/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -45,21 +45,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         unsuscribeFromKeyboardNotifications()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
-            self.imageView.image = image
+            imageView.image = image
         }
 
-        self.pickerController.dismiss(animated: true, completion: nil)
-        self.shareButton.isEnabled = true
+        pickerController.dismiss(animated: true, completion: nil)
+        shareButton.isEnabled = true
     }
     
     @IBAction func pickImageFromAlbum(_ sender: Any) {
@@ -76,19 +78,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func keyboardWillShow(_ notification : Notification) {
-        self.scrollView.isScrollEnabled = true
+        scrollView.isScrollEnabled = true
         let info = notification.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height + 40 , right: 0.0)
 
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
 
-        var aRect : CGRect = self.view.frame
+        var aRect : CGRect = view.frame
         aRect.size.height -= keyboardSize!.height
         if let activeField = self.activeField {
             if (!aRect.contains(activeField.frame.origin)){
-                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+                scrollView.scrollRectToVisible(activeField.frame, animated: true)
             }
         }
     }
@@ -97,10 +99,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let info = notification.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        self.view.endEditing(true)
-        self.scrollView.isScrollEnabled = false
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        view.endEditing(true)
+        scrollView.isScrollEnabled = false
     }
     
     private func subscribeToKeyboardNotifications() {
@@ -119,24 +121,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     private func unsuscribeFromKeyboardNotifications(){
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func generateMemeImage() -> UIImage {
         // hide controls
-        self.topToolbar.isHidden = true
-        self.bottomToolbar.isHidden = true
+        topToolbar.isHidden = true
+        bottomToolbar.isHidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // show controls
-        self.topToolbar.isHidden = false
-        self.bottomToolbar.isHidden = false
+        topToolbar.isHidden = false
+        bottomToolbar.isHidden = false
         
         return memedImage
     }
@@ -145,15 +146,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memeImage = generateMemeImage()
         let meme = Meme(topText: headerText.text!, bottomText: footerText.text!, originalImage: imageView.image!, memeImage: memeImage)
         let activityViewController = UIActivityViewController(activityItems: [ meme.memeImage ], applicationActivities: nil)
-        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+        activityViewController.completionWithItemsHandler = {(_, completed: Bool, _, _) in
             if completed {
                 // User completed activity
                 self.saveImageToDocumentDirectory(image: meme.memeImage)
             }
             
         }
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        self.present(activityViewController, animated: true, completion: nil)
+        activityViewController.popoverPresentationController?.sourceView = view
+        present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func cancelAction(_ sender: Any) {

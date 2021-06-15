@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ViewController: UITextFieldDelegate {
+extension MemeEditorViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.activeField = textField

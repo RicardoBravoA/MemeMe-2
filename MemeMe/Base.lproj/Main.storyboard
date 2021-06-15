@@ -39,20 +39,16 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="WRITE HERE" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpq-7P-eJp">
-                                <rect key="frame" x="20" y="64" width="374" height="38.5"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xQ2-xY-uNm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YfY-Fn-6AQ">
+                                <rect key="frame" x="20" y="772" width="374" height="26"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xQ2-xY-uNm">
-                                <rect key="frame" x="57" y="298" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="7xP-ZC-Edf"/>
-                                    <constraint firstAttribute="width" constant="300" id="fLc-38-LaP"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="WRITE HERE" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YfY-Fn-6AQ">
-                                <rect key="frame" x="20" y="772" width="374" height="26"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dc6-a4-sPa" userLabel="Header Text">
+                                <rect key="frame" x="20" y="64" width="374" height="26"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
@@ -60,23 +56,25 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
-                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2fo-ky-3vD"/>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6Ni-XN-aPJ"/>
                             <constraint firstItem="YfY-Fn-6AQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6oW-Ga-Ca5"/>
-                            <constraint firstItem="zpq-7P-eJp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="K1o-6i-O9K"/>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="K8E-4X-wgo"/>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="top" secondItem="YfY-Fn-6AQ" secondAttribute="bottom" constant="20" id="KPB-4I-myo"/>
-                            <constraint firstItem="zpq-7P-eJp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="PRX-9U-gk1"/>
+                            <constraint firstItem="dc6-a4-sPa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="NLD-ZD-ryQ"/>
+                            <constraint firstItem="FMt-5w-QJs" firstAttribute="top" secondItem="xQ2-xY-uNm" secondAttribute="bottom" id="PNI-64-e74"/>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VS4-Qq-r9C"/>
+                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="i5e-RP-2nH"/>
+                            <constraint firstItem="dc6-a4-sPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jhd-ly-k1g"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dc6-a4-sPa" secondAttribute="trailing" constant="20" id="klt-gA-6fQ"/>
+                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oDo-Kk-4Bt"/>
+                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ofs-0m-H3N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YfY-Fn-6AQ" secondAttribute="trailing" constant="20" id="tTP-12-nbN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zpq-7P-eJp" secondAttribute="trailing" constant="20" id="ufs-XO-RXc"/>
-                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zD8-RU-4UN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="9k7-OW-EEg" id="WMs-Sp-nEo"/>
                         <outlet property="footerText" destination="YfY-Fn-6AQ" id="SqF-Vq-RbY"/>
-                        <outlet property="headerText" destination="zpq-7P-eJp" id="ZYm-W2-d7V"/>
+                        <outlet property="headerText" destination="dc6-a4-sPa" id="oOW-zH-4Pb"/>
                         <outlet property="imageView" destination="xQ2-xY-uNm" id="ttK-EJ-1fG"/>
                     </connections>
                 </viewController>

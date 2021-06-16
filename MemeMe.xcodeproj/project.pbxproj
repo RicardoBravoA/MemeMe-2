@@ -16,6 +16,7 @@
 		C64C399126780D55009E4487 /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C64C399026780D55009E4487 /* impact.ttf */; };
 		C64C3993267813CB009E4487 /* MemeEditorViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C3992267813CB009E4487 /* MemeEditorViewControllerExtension.swift */; };
 		C64C399526784FCC009E4487 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C399426784FCC009E4487 /* Meme.swift */; };
+		C6B07C8F26796A7A00069290 /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B07C8E26796A7A00069290 /* MemeCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C64C399026780D55009E4487 /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = impact.ttf; path = ../../../../../../Downloads/impact/impact.ttf; sourceTree = "<group>"; };
 		C64C3992267813CB009E4487 /* MemeEditorViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeEditorViewControllerExtension.swift; sourceTree = "<group>"; };
 		C64C399426784FCC009E4487 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		C6B07C8E26796A7A00069290 /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				C64C3992267813CB009E4487 /* MemeEditorViewControllerExtension.swift */,
 				C64C399426784FCC009E4487 /* Meme.swift */,
 				C64C398F26780CF0009E4487 /* Resources */,
+				C6B07C8E26796A7A00069290 /* MemeCollectionViewController.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				C64C39802677F83C009E4487 /* MemeEditorViewController.swift in Sources */,
 				C64C397C2677F83B009E4487 /* AppDelegate.swift in Sources */,
 				C64C397E2677F83C009E4487 /* SceneDelegate.swift in Sources */,
+				C6B07C8F26796A7A00069290 /* MemeCollectionViewController.swift in Sources */,
 				C64C399526784FCC009E4487 /* Meme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

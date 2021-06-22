@@ -161,7 +161,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        defaultScreen()
+        dismiss(animated: true, completion: nil)
     }
     
     private func defaultScreen(){

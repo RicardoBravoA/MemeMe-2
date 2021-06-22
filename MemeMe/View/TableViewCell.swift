@@ -15,8 +15,6 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     }
     
     override func layoutSubviews() {

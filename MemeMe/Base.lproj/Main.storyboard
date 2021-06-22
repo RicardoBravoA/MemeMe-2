@@ -171,6 +171,7 @@
                                     <outlet property="memeImageView" destination="Z7f-hJ-cey" id="ZkK-XU-FOV"/>
                                     <outlet property="memeLabel" destination="P8O-hd-5px" id="o6B-yn-JXN"/>
                                     <outlet property="memeView" destination="AKb-qW-A5X" id="gOD-ha-YXI"/>
+                                    <segue destination="A9m-RE-kya" kind="show" identifier="ShowDetailFromTableView" id="Eua-eR-APD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -188,6 +189,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7e1-x0-F0v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4373.913043478261" y="-906.02678571428567"/>
+        </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="eqs-vD-fIp">
+            <objects>
+                <viewController id="A9m-RE-kya" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PU0-yh-HnK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPH-da-YuU">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6vD-9O-IMa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uPH-da-YuU" firstAttribute="top" secondItem="6vD-9O-IMa" secondAttribute="top" id="5tg-u3-GTS"/>
+                            <constraint firstItem="6vD-9O-IMa" firstAttribute="trailing" secondItem="uPH-da-YuU" secondAttribute="trailing" id="9Ce-1q-lWL"/>
+                            <constraint firstItem="6vD-9O-IMa" firstAttribute="bottom" secondItem="uPH-da-YuU" secondAttribute="bottom" id="wlg-de-uJu"/>
+                            <constraint firstItem="uPH-da-YuU" firstAttribute="leading" secondItem="6vD-9O-IMa" secondAttribute="leading" id="zxA-cK-xfD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aH2-Ii-JMl"/>
+                    <connections>
+                        <outlet property="memeImageView" destination="uPH-da-YuU" id="qdo-by-KCq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NPV-H8-ON0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5407" y="-666"/>
         </scene>
         <!--Meme Collection View Controller-->
         <scene sceneID="xRf-tN-RL6">
@@ -228,6 +259,7 @@
                                 <size key="customSize" width="120" height="120"/>
                                 <connections>
                                     <outlet property="memeImageView" destination="oyH-KH-CGB" id="kN1-wH-4JZ"/>
+                                    <segue destination="A9m-RE-kya" kind="show" identifier="ShowDetailFromCollectionView" id="AOw-vc-qlK"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -291,6 +323,9 @@
             <point key="canvasLocation" x="3326.0869565217395" y="-609.375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="AOw-vc-qlK"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>

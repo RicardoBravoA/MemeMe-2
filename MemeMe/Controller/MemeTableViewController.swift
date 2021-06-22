@@ -35,6 +35,15 @@ class MemeTableViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailFromTableView" {
+            if let cell = sender as? TableViewCell {
+                let detail = segue.destination as? MemeDetailViewController
+                detail?.meme = memes[(memeTableView.indexPath(for: cell)?.row)!]
+            }
+        }
+    }
+    
 }
 
 extension MemeTableViewController: UITableViewDataSource, UITableViewDelegate {

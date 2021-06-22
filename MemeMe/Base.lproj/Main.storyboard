@@ -189,28 +189,46 @@
             </objects>
             <point key="canvasLocation" x="4373.913043478261" y="-906.02678571428567"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Meme Collection View Controller-->
         <scene sceneID="xRf-tN-RL6">
             <objects>
-                <collectionViewController id="Mol-wW-Taa" sceneMemberID="viewController">
+                <collectionViewController id="Mol-wW-Taa" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Jpf-JA-ZjR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e0l-L6-VjW">
-                            <size key="itemSize" width="128" height="128"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e0l-L6-VjW">
+                            <size key="itemSize" width="120" height="120"/>
+                            <size key="estimatedItemSize" width="120" height="120"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="JYc-Kh-ESm">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="JYc-Kh-ESm" customClass="CollectionViewCell" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1ES-qi-1Kg">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="at" translatesAutoresizingMaskIntoConstraints="NO" id="oyH-KH-CGB">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="120" id="TII-zg-oKe"/>
+                                                <constraint firstAttribute="width" constant="120" id="mxq-6c-Rzg"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oyH-KH-CGB" firstAttribute="centerX" secondItem="1ES-qi-1Kg" secondAttribute="centerX" id="3JQ-If-XdF"/>
+                                        <constraint firstItem="oyH-KH-CGB" firstAttribute="centerY" secondItem="1ES-qi-1Kg" secondAttribute="centerY" id="zYo-f3-zIa"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
+                                <size key="customSize" width="120" height="120"/>
+                                <connections>
+                                    <outlet property="memeImageView" destination="oyH-KH-CGB" id="kN1-wH-4JZ"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -219,6 +237,10 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="" image="square.grid.3x3.fill" catalog="system" id="U9M-cm-u1y"/>
+                    <connections>
+                        <outlet property="flowLayout" destination="e0l-L6-VjW" id="mBN-bY-Bpq"/>
+                        <outlet property="memeCollectionView" destination="Jpf-JA-ZjR" id="vv8-hX-Y7t"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K84-G4-qg7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -267,6 +289,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="at" width="400" height="300"/>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="plus" catalog="system" width="128" height="113"/>

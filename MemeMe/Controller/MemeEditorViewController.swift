@@ -126,8 +126,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemeImage() -> UIImage {
         // hide controls
-        topToolbar.isHidden = true
-        bottomToolbar.isHidden = true
+        hideTopAndBottomBars(visibility: true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(view.frame.size)
@@ -136,10 +135,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         UIGraphicsEndImageContext()
         
         // show controls
-        topToolbar.isHidden = false
-        bottomToolbar.isHidden = false
+        hideTopAndBottomBars(visibility: false)
         
         return memedImage
+    }
+    
+    private func hideTopAndBottomBars(visibility: Bool) {
+        topToolbar.isHidden = visibility
+        bottomToolbar.isHidden = visibility
     }
     
     @IBAction func shareMeme(_ sender: Any) {

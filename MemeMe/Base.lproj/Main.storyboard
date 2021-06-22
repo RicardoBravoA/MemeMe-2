@@ -14,17 +14,17 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VmX-V9-33Z">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zr2-8N-S0f">
-                                        <rect key="frame" x="8" y="8" width="398" height="792"/>
+                                        <rect key="frame" x="8" y="8" width="398" height="802"/>
                                         <subviews>
                                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nq4-KF-Nzw" userLabel="Bottom Toolbar">
-                                                <rect key="frame" x="0.0" y="748" width="398" height="44"/>
+                                                <rect key="frame" x="0.0" y="758" width="398" height="44"/>
                                                 <items>
                                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="AaB-f2-6As"/>
                                                     <barButtonItem image="camera.fill" catalog="system" id="VzB-2i-vSB" userLabel="Camera Button">
@@ -58,7 +58,7 @@
                                                 </items>
                                             </toolbar>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iZY-NH-SNK">
-                                                <rect key="frame" x="8" y="44" width="382" height="704"/>
+                                                <rect key="frame" x="8" y="44" width="382" height="714"/>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J4B-cb-K1W" userLabel="Header Text">
                                                 <rect key="frame" x="16" y="52" width="366" height="18.5"/>
@@ -66,7 +66,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tcQ-1J-c6J" userLabel="Footer Text">
-                                                <rect key="frame" x="16" y="721.5" width="366" height="18.5"/>
+                                                <rect key="frame" x="16" y="731.5" width="366" height="18.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
@@ -304,7 +304,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="geu-GR-53G">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="xyA-AJ-uGv">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="showDetail" id="qdh-4U-0ED"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="qdh-4U-0ED"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

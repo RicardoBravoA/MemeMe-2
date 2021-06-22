@@ -44,6 +44,15 @@ class MemeCollectionViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailFromCollectionView" {
+            if let cell = sender as? CollectionViewCell {
+                let detail = segue.destination as! MemeDetailViewController
+                detail.meme = memes[(memeCollectionView?.indexPath(for: cell)?.row)!]
+            }
+        }
+    }
+    
 }
 
 extension MemeCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {

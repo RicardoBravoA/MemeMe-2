@@ -22,13 +22,11 @@ class MemeTableViewController: UIViewController {
         return appDelegate.memes
     }
     
-    let countries = [
-        Country(isoCode: "at", name: "Austria"),
-        Country(isoCode: "be", name: "Belgium"),
-        Country(isoCode: "de", name: "Germany"),
-        Country(isoCode: "el", name: "Greece"),
-        Country(isoCode: "fr", name: "France"),
-    ]
+    var countries: [Country]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.countries
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,18 +12,16 @@ class MemeCollectionViewController: UIViewController {
     @IBOutlet weak var memeCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    let countries = [
-        Country(isoCode: "at", name: "Austria"),
-        Country(isoCode: "be", name: "Belgium"),
-        Country(isoCode: "de", name: "Germany"),
-        Country(isoCode: "el", name: "Greece"),
-        Country(isoCode: "fr", name: "France"),
-    ]
-    
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         return appDelegate.memes
+    }
+    
+    var countries: [Country]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.countries
     }
     
     override func viewDidLoad() {

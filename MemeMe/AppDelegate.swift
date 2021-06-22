@@ -11,13 +11,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var memes = [Meme]()
-    var countries = [
-        Country(isoCode: "at", name: "Austria"),
-        Country(isoCode: "be", name: "Belgium"),
-        Country(isoCode: "de", name: "Germany"),
-        Country(isoCode: "el", name: "Greece"),
-        Country(isoCode: "fr", name: "France"),
-    ]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

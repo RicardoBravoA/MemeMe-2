@@ -76,7 +76,6 @@
 				C64C39842677F83D009E4487 /* Assets.xcassets */,
 				C64C39862677F83D009E4487 /* LaunchScreen.storyboard */,
 				C64C39892677F83D009E4487 /* Info.plist */,
-				C64C3992267813CB009E4487 /* MemeEditorViewControllerExtension.swift */,
 				C64C399426784FCC009E4487 /* Meme.swift */,
 				C64C398F26780CF0009E4487 /* Resources */,
 				C6B07C972679E45B00069290 /* Controller */,
@@ -97,6 +96,7 @@
 		C6B07C972679E45B00069290 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C64C3992267813CB009E4487 /* MemeEditorViewControllerExtension.swift */,
 				C6B07C8E26796A7A00069290 /* MemeCollectionViewController.swift */,
 				C64C397F2677F83C009E4487 /* MemeEditorViewController.swift */,
 				C6B07C902679B68600069290 /* MemeTableViewController.swift */,

@@ -18,12 +18,6 @@ class MemeCollectionViewController: UIViewController {
         return appDelegate.memes
     }
     
-    var countries: [Country]! {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.countries
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,14 +41,14 @@ extension MemeCollectionViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return countries.count
+        return memes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = memeCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        let country = countries[indexPath.row]
+        let meme = memes[indexPath.row]
         
-        cell.memeImageView.image = UIImage(named: country.isoCode)
+        cell.memeImageView.image = meme.memeImage
         return cell
     }
     

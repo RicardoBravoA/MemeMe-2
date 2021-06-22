@@ -12,14 +12,6 @@ class MemeCollectionViewController: UIViewController {
     @IBOutlet weak var memeCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    let countries = [
-        Country(isoCode: "at", name: "Austria"),
-        Country(isoCode: "be", name: "Belgium"),
-        Country(isoCode: "de", name: "Germany"),
-        Country(isoCode: "el", name: "Greece"),
-        Country(isoCode: "fr", name: "France"),
-    ]
-    
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
@@ -38,6 +30,18 @@ class MemeCollectionViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.estimatedItemSize = CGSize(width: dimension, height: dimension)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+    }
+    
+    @objc func reloadData(notification : NSNotification) {
+        let data = notification.userInfo
+        if let value = data?["data"] as? String {
+            if(value == "load") {
+                memeCollectionView.reloadData()
+            }
+        }
     }
     
 }
@@ -49,14 +53,14 @@ extension MemeCollectionViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return countries.count
+        return memes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = memeCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        let country = countries[indexPath.row]
+        let meme = memes[indexPath.row]
         
-        cell.memeImageView.image = UIImage(named: country.isoCode)
+        cell.memeImageView.image = meme.memeImage
         return cell
     }
     

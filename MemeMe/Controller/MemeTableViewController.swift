@@ -7,11 +7,6 @@
 
 import UIKit
 
-struct Country {
-    var isoCode: String
-    var name: String
-}
-
 class MemeTableViewController: UIViewController {
     
     @IBOutlet weak var memeTableView: UITableView!
@@ -22,22 +17,22 @@ class MemeTableViewController: UIViewController {
         return appDelegate.memes
     }
     
-    let countries = [
-        Country(isoCode: "at", name: "Austria"),
-        Country(isoCode: "be", name: "Belgium"),
-        Country(isoCode: "de", name: "Germany"),
-        Country(isoCode: "el", name: "Greece"),
-        Country(isoCode: "fr", name: "France"),
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         memeTableView.dataSource = self
         memeTableView.delegate = self
         
-        //remove separator
-//        memeTableView.separatorStyle = .none
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
+    }
+    
+    @objc func reloadData(notification : NSNotification) {
+        let data = notification.userInfo
+        if let value = data?["data"] as? String {
+            if(value == "load") {
+                memeTableView.reloadData()
+            }
+        }
     }
     
 }
@@ -45,15 +40,15 @@ class MemeTableViewController: UIViewController {
 extension MemeTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countries.count
+        return memes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = memeTableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
-        let country = countries[indexPath.row]
+        let meme = memes[indexPath.row]
         
-        cell.memeLabel.text = country.name
-        cell.memeImageView?.image = UIImage(named: country.isoCode)
+        cell.memeLabel.text = "\(meme.topText)...\(meme.bottomText)"
+        cell.memeImageView?.image = meme.memeImage
         return cell
     }
     

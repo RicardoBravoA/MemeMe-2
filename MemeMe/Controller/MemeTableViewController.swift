@@ -22,6 +22,17 @@ class MemeTableViewController: UIViewController {
         
         memeTableView.dataSource = self
         memeTableView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
+    }
+    
+    @objc func reloadData(notification : NSNotification) {
+        let data = notification.userInfo
+        if let value = data?["data"] as? String {
+            if(value == "load") {
+                memeTableView.reloadData()
+            }
+        }
     }
     
 }

@@ -149,10 +149,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         activityViewController.completionWithItemsHandler = {(_, completed: Bool, _, _) in
             if completed {
                 // User completed activity
-                self.saveMeme(image: meme.memeImage)
-                
-                // Save meme in AppDelegate
-                (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+                self.saveMeme(meme: meme)
             }
             
         }
@@ -161,7 +158,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss()
     }
     
     private func defaultScreen(){
@@ -171,13 +168,19 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         shareButton.isEnabled = false
     }
     
-    private func saveMeme(image: UIImage ) {
+    private func saveMeme(meme: Meme) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileName = "image-meme-\(NSDate().timeIntervalSince1970).png" // name of the image to be saved
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        if let data = image.jpegData(compressionQuality: 1.0),!FileManager.default.fileExists(atPath: fileURL.path){
+        if let data = meme.memeImage.jpegData(compressionQuality: 1.0),!FileManager.default.fileExists(atPath: fileURL.path){
             do {
                 try data.write(to: fileURL)
+                // Save meme in AppDelegate
+                (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+                
+                // Notify for reload data
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil, userInfo: ["data" : "load"])
+                dismiss()
             } catch {
                 print("error saving file:", error)
             }
@@ -189,6 +192,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         textField.textAlignment = .center
         textField.font = UIFont(name: "impact", size: 30)
         textField.delegate = self
+    }
+    
+    private func dismiss(){
+        dismiss(animated: true, completion: nil)
     }
     
 }

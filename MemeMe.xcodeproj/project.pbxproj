@@ -97,8 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				C64C3992267813CB009E4487 /* MemeEditorViewControllerExtension.swift */,
-				C6B07C8E26796A7A00069290 /* MemeCollectionViewController.swift */,
 				C64C397F2677F83C009E4487 /* MemeEditorViewController.swift */,
+				C6B07C8E26796A7A00069290 /* MemeCollectionViewController.swift */,
 				C6B07C902679B68600069290 /* MemeTableViewController.swift */,
 			);
 			path = Controller;

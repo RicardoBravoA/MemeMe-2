@@ -30,6 +30,18 @@ class MemeCollectionViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.estimatedItemSize = CGSize(width: dimension, height: dimension)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+    }
+    
+    @objc func reloadData(notification : NSNotification) {
+        let data = notification.userInfo
+        if let value = data?["data"] as? String {
+            if(value == "load") {
+                memeCollectionView.reloadData()
+            }
+        }
     }
     
 }

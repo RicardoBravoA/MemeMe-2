@@ -264,12 +264,12 @@
             </objects>
             <point key="canvasLocation" x="2415.9420289855075" y="-609.375"/>
         </scene>
-        <!--Sent Meme-->
+        <!--Sent Memes-->
         <scene sceneID="Al2-l5-HDN">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rWo-aG-uIL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Sent Meme" id="geu-GR-53G">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="geu-GR-53G">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="xyA-AJ-uGv">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="showDetail" id="qdh-4U-0ED"/>
